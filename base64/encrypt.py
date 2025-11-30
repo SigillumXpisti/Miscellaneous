@@ -20,5 +20,6 @@ def encrypt_file(input_path: str, output_path: str, key_hex: str):
 if __name__ == '__main__':
     default_key = "e7abdcb321442c2e7c46cf245b889de168ee456315e0dda6f26e1fc3c33efefa"
     key_input = input("Key [{}]: ".format(default_key)) or default_key
-    filename = input("File to encrypt: ")
-    encrypt_file(filename, 'data.b64', key_input)
+    default_filename = "tools.7z"
+    filename_input = input("File to encrypt [{}]: ".format(default_filename)) or default_filename
+    encrypt_file(filename_input, 'data.b64', key_input)

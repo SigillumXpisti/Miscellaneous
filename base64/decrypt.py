@@ -20,5 +20,6 @@ def decrypt_file(input_path: str, output_path: str, key_hex: str):
 if __name__ == '__main__':
     default_key = "e7abdcb321442c2e7c46cf245b889de168ee456315e0dda6f26e1fc3c33efefa"
     key_input = input("Key [{}]: ".format(default_key)) or default_key
-    filename = input("Output filename: ")
+    default_filename = "tools.7z"
+    filename = input("Output filename [{}]: ".format(default_filename)) or default_filename
     decrypt_file('data.b64', filename, key_input)
