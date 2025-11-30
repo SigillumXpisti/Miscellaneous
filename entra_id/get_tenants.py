@@ -1,11 +1,6 @@
 import requests
-import csv
 
-filename = "C:\\temp\\domains_you_own.csv"
-
-def load_csv_to_json(filename):
-    with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
-        return [row for row in csv.DictReader(csvfile)]
+domains = ["contoso.com"]
 
 def get_tenant(domain):
     url1 = f"https://login.microsoftonline.com/common/userrealm/{domain}?api-version=2.1"
@@ -24,11 +19,10 @@ def get_tenant(domain):
         tenant_region_scope = data2.get('tenant_region_scope')
 
         if tenant_id:
-            print(f"{domain};{federation_brand_name};{tenant_id};{tenant_region_scope}")
+            response3 = requests.get(f"https://azure-ad-tools.ai.moda/api/v1.0.0/lookup-by-tenant-id/{tenant_id}")
+            data3 = response3.json()
+            defaultDomainName = data3.get('defaultDomainName')
+            print(f"{tenant_id},{tenant_region_scope},{defaultDomainName},{federation_brand_name},{domain}")
 
-# Load domain names from CSV
-json_array = load_csv_to_json(filename)
-
-# Fetch tenant information for each domain
-for line in json_array:
-    get_tenant(line['Domain Name'])
+for domain in domains:
+    get_tenant(domain)

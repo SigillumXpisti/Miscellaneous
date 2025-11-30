@@ -1,3 +1,3 @@
-# EntraID
+## Misc
 
-Few Python scripts to get information from Entra ID
+Various public Python scripts.
