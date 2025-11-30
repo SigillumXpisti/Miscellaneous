@@ -21,4 +21,4 @@ if __name__ == '__main__':
     default_key = "e7abdcb321442c2e7c46cf245b889de168ee456315e0dda6f26e1fc3c33efefa"
     key_input = input("Key [{}]: ".format(default_key)) or default_key
     filename = input("File to encrypt: ")
-    encrypt_file(filename, 'data.txt', key_input)
+    encrypt_file(filename, 'data.b64', key_input)
